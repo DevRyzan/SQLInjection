@@ -13,6 +13,7 @@ class LoginUserUseCase:
         
         try:
             user = self.user_repository.find_by_email(email)
+            # return self.user_repository.find_by_email(email) # TODO: uncomment this if user doesn't return as expected
         except ValueError as e:
             raise e("No user with this email found")
         except Exception as e:
