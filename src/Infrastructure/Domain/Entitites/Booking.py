@@ -1,8 +1,8 @@
 import datetime
 
 class Booking:
-    def __init__(self, id: int, startdate: datetime.date, enddate: datetime.date, userid: int):
+    def __init__(self, id: int, start_date: datetime.date, end_date: datetime.date, userid: int):
         self.id = id
-        self.stardate = startdate
-        self.enddate = enddate
+        self.start_date = start_date
+        self.end_date = end_date
         self.userid = userid
