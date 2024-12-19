@@ -29,9 +29,9 @@ connection_string = (
 
 try:
     conn = pyodbc.connect(connection_string, timeout=5)
-    print("✅ Bağlantı başarılı!")
+    print("✅ Conn suc")
 except Exception as e:
-    print(f"❌ Bağlantı hatası: {e}")
+    print(f"❌ Error Conn: {e}")
 finally:
     if 'conn' in locals():
         conn.close()
