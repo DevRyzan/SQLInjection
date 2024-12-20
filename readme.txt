@@ -2,6 +2,8 @@ MySQL Db Connection
 
 ***** Important If you have any issue about protocols, port, IPs, just let me know. *****
 
+***** Important-2 There is no BR in our code or Db, so if you keep testing the same code (main.py), same user data (admin, user1, user2) will be added every time. This is not a problem but good to know. *****
+
 ### MacOS ###
 
 -Download docker
