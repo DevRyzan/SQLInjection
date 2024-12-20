@@ -1,12 +1,15 @@
 from sqlalchemy import Column, Integer, String
 from Infrastructure.API.DbConfig import Base
 
+#User Entity class. We will store our property and some hidden data in this class and add new properties.
+#This comment is for Bora I have changed some code in this class because it didn't fit in our db. After seeing this we can continue.
 class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, nullable=False)
-    email = Column(String, unique=True, nullable=False)
+    username = Column(String(50), unique=True, nullable=False)
+    email = Column(String(100), unique=True, nullable=False)
+
 
 # import datetime
 # class User:
