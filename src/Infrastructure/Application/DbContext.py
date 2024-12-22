@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from Infrastructure.API.DbConfig import SessionLocal
 from Infrastructure.Domain.Entities.User import User
 
