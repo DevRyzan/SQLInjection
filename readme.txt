@@ -4,6 +4,14 @@ MySQL Db Connection
 
 ***** Important-2 There is no BR in our code or Db, so if you keep testing the same code (main.py), same user data (admin, user1, user2) will be added every time. This is not a problem but good to know. *****
 
+#Libs
+pip install sqlalchemy
+
+pip install pymysql
+
+pip install pyodbc
+
+
 ### MacOS ###
 
 -Download docker
