@@ -2,8 +2,8 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
-from Infrastructure.API.DbConfig import engine, Base
-from Infrastructure.Application.DbContext import DbContext
+from DbConfig import engine, Base
+from Application.DbContext import DbContext
 
 #Create MetaData on MySQL DB
 def create_tables():
