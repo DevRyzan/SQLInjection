@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/soh-favicon.png" />
+    <link rel="stylesheet" href="style/stylesheet.css" />
+    <link rel="stylesheet" href="style/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <script
+      src="https://kit.fontawesome.com/18cbcebdd2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </head>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url(../img/bg.jpg);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .profile-container {
+        background: #fff;
+        color: #333;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 100%;
+        padding: 20px;
+        overflow: auto;
+      }
+      .profile-header {
+        text-align: center;
+      }
+      .profile-header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #842234;
+      }
+      .profile-header h2 {
+        margin: 10px 0 5px;
+      }
+      .profile-header p {
+        font-size: 14px;
+        color: #555;
+      }
+      .button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        background: #842234;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .button:hover {
+        background: #280a10;
+      }
+      .hidden {
+        display: none;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .payment-options {
+        margin-top: 20px;
+      }
+      .payment-option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .payment-option button {
+        border: none;
+        background: #4b0916;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <div id="header"></div>
+  <body>
+    <div class="profile-container">
+      <div class="profile-header">
+        <img src="https://via.placeholder.com/100" alt="Profile Picture" />
+        <h2>Soh Admin</h2>
+        <p>Email: info@soh.com</p>
+      </div>
+
+      <button class="button" onclick="toggleEditInfo()">Edit Info</button>
+
+      <div id="edit-info" class="hidden">
+        <form id="info-form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="John Doe" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="johndoe@example.com" />
+          </div>
+          <button type="button" class="button" onclick="saveInfo()">
+            Save Info
+          </button>
+        </form>
+      </div>
+
+      <button class="button" onclick="toggleAddPaymentForm()">
+        Add Payment Option
+      </button>
+
+      <div id="add-payment" class="hidden">
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="card-name">Cardholder Name:</label>
+            <input type="text" id="card-name" placeholder="Cardholder Name" />
+          </div>
+          <div class="form-group">
+            <label for="card-number">Card Number:</label>
+            <input
+              type="text"
+              id="card-number"
+              placeholder="1234 5678 9012 3456"
+            />
+          </div>
+          <div class="form-group">
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" placeholder="MM/YY" />
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" placeholder="123" />
+          </div>
+          <button type="button" class="button" onclick="addPaymentOption()">
+            Add Card
+          </button>
+        </form>
+      </div>
+
+      <div class="payment-options" id="payment-options">
+        <div class="payment-option">
+          <span>Visa **** 1234</span>
+          <button onclick="removePaymentOption(this)">Remove</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
