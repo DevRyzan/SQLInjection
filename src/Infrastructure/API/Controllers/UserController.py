@@ -28,3 +28,10 @@ def get_user(user_id: int):
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
     return {"id": user.id, "username": user.username, "email": user.email}
+
+@router.post("/secure/login")
+def secure_login(username: str, password: str):
+    user = repo.get_user_by_username(username)
+    if not user or user.password != password:
+        raise HTTPException(status_code=401, detail="Invalid username or password")
+    return {"message": "Login successful", "user_id": user.id}
