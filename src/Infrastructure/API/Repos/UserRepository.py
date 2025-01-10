@@ -1,8 +1,10 @@
-from Infrastructure.API.DbConfig import SessionLocal
-from Infrastructure.Domain.Entities.User import User
-from passlib.context import CryptContext
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+from  DbConfig import SessionLocal
+from  Domain.Entities.User import User
 
 class UserRepository:
     def __init__(self):

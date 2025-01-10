@@ -4,10 +4,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'
 
 
 from fastapi import FastAPI
-from Controller.UserController import router as user_router
+from Controllers.UserController import router as user_router
 from DbConfig import engine, Base
-from Application.DbContext import DbContext
-from Controller import UserController
+from Application.DbContext import  DbContext
+from InSecureControllers.InSecureUserController import router as router_insecure
+
 
 
 try:
@@ -21,6 +22,7 @@ except Exception as e:
 app = FastAPI()
 
 app.include_router(user_router, prefix="/users", tags=["Users"])
+app.include_router(router_insecure, prefix="/insecure", tags=["Insecure Users"])
 
 if __name__ == "__main__":
     import uvicorn
