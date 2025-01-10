@@ -2,11 +2,13 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
+
 from fastapi import FastAPI
 from Controller.UserController import router as user_router
 from DbConfig import engine, Base
 from Application.DbContext import DbContext
 from Controller import UserController
+
 
 try:
     Base.metadata.create_all(bind=engine)
