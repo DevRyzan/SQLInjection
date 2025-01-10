@@ -1,5 +1,5 @@
 from Domain.Models.DTOs.UserDTOs.RegisterDTO import RegisterDTO
-from Repos.userRepo import UserRepository
+from src.Infrastructure.API.Repos.UserRepository import UserRepository
 
 class CreateUserUseCase:
     def __init__(self):

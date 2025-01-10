@@ -55,3 +55,40 @@ pip install pyodbc
 #query
 -SELECT * FROM users;
 
+APIs libs 
+
+pip install fastapi uvicorn passlib python-jose
+pip install fastapi uvicorn sqlalchemy passlib python-multipart
+
+uvicorn src.Infrastructure.WebAPI.UserAPI:app --reload
+
+pip install fastapi
+pip install uvicorn
+
+pip install fastapi uvicorn sqlalchemy pymysql passlib
+
+
+
+###For data migration 
+
+These libraries are necessary for migrations and database interaction.
+-pip install alembic mysql-connector-python sqlalchemy
+
+Creates the base alembic folder structure.
+-alembic init migrations
+
+Locate sqlalchemy.url and set your database connection string:
+-sqlalchemy.url = mysql+mysqlconnector://root:password@localhost:3306/localmysqldb
+
+
+Add your model’s metadata for migrations:
+
+from myapp.models import Base  # Replace `myapp.models` with your module
+target_metadata = Base.metadata
+
+Automatically generate migration files based on model changes.
+-alembic revision --autogenerate -m "Initial migration"
+
+
+Applies all migrations to the database.
+-alembic upgrade head
