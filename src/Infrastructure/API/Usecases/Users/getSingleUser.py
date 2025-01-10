@@ -1,4 +1,4 @@
-from src.Infrastructure.WebAPI.Repos.UserRepository import UserRepository
+from src.Infrastructure.API.Repos.UserRepository import UserRepository
 
 class GetSingleUserUseCase:
     def __init__(self):

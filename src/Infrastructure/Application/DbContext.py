@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from Infrastructure.WebAPI.DbConfig import SessionLocal
+from Infrastructure.API.DbConfig import SessionLocal
 from Infrastructure.Domain.Entities.User import User
 
 #This class for Conext class. these repos will be move in our repos layer "add_user and get_all?users". I have held them for quick testing

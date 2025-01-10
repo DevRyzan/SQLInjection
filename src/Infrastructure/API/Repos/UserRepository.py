@@ -1,4 +1,4 @@
-from Infrastructure.WebAPI.DbConfig import SessionLocal
+from Infrastructure.API.DbConfig import SessionLocal
 from Infrastructure.Domain.Entities.User import User
 from passlib.context import CryptContext
 

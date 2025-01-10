@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
 from fastapi import APIRouter, HTTPException
-from Infrastructure.WebAPI.Repos.UserRepository import UserRepository
+from Infrastructure.API.Repos.UserRepository import UserRepository
 
 router = APIRouter()
 repo = UserRepository()
