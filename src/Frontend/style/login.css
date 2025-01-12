@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+body {
+  background: url(../img/bg.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  height: auto;
+}
+.form-holder {
+  background: #000;
+  width: 450px;
+  max-width: 90%;
+  padding: 35px 0px;
+  opacity: 0.7;
+  border-radius: 10px;
+}
+.logo {
+  display: block;
+  width: 100px;
+  margin: 0px auto;
+  border-radius: 20px;
+  background: #222;
+  padding: 10px;
+}
+.form-holder h2 {
+  color: #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 22px;
+}
+.form .form-group {
+  width: 90%;
+  margin: 20px auto;
+  padding: 10px;
+  position: relative;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  background: #222;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  border-bottom: 2px solid #777;
+  border-radius: 5px;
+  padding-left: 40px;
+}
+.form-group img {
+  width: 26px;
+  position: absolute;
+  left: 15px;
+  top: 13px;
+}
+
+#country {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  color: #656565;
+  font-size: 15px;
+  border: 2px solid #777;
+  border-radius: 5px;
+  /* cursor: pointer; */
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  border: 2px solid #777;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-group input:focus {
+  background: #333;
+  border-color: #842234;
+}
+.form-group button:hover {
+  background: #280a10;
+}
+.form-group a {
+  color: #fafafa;
+  text-decoration: none;
+  font-size: 14px;
+}
+.form-group a:hover {
+  color: #b2b2b2;
+}
+.form-group .right-link {
+  float: right;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+label {
+  color: #fff;
+}
