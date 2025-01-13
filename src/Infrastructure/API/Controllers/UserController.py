@@ -9,13 +9,13 @@ router = APIRouter()
 repo = UserRepository()
 
 @router.post("/register")
-def register(username: str, email: str, password: str):
+def register(username: str, fullname : str , email: str, password: str):
     repo = UserRepository()
     existing_user = repo.get_user_by_username(username)
     if existing_user:
         return {"error": "Username already exists"}
 
-    user = repo.create_user(username=username, email=email, password=password)
+    user = repo.create_user(username=username, fullname = fullname ,email=email, password=password)
     if user:   
         return {"message": "User registered successfully", "user_id": user.id}
     else:

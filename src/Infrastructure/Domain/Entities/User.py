@@ -15,7 +15,8 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String(255), unique=True, nullable=False)  
-    email = Column(String(255), unique=True, nullable=False)  
-    password = Column(String(255), nullable=False)
-    isDeleted = Column(Boolean, default=False)
+    username = Column(String(255), unique=False, nullable=True)  
+    fullname = Column(String(255), unique=False, nullable=True) 
+    email = Column(String(255), unique=False, nullable=True)  
+    password = Column(String(255), nullable=True)
+    isDeleted = Column(Boolean, default=True)
