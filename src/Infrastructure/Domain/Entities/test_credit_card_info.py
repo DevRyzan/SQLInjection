@@ -18,10 +18,10 @@ class TestCreditCardInfo(unittest.TestCase):
         expr_date = datetime.date(2025, 12, 31)
         cvv = "123"
 
-        # Creating CreditCardInfo object
+        # creating CreditCardInfo object
         card = CreditCardInfo(card_id, user_id, credit_card_number, name_on_card, expr_date, cvv)
 
-        # Check if values ​​are assigned correctly
+        # check if values ​​are assigned correctly
         self.assertEqual(card.id, card_id)
         self.assertEqual(card.user_id, user_id)
         self.assertEqual(card.credit_card_number, credit_card_number)
@@ -30,7 +30,7 @@ class TestCreditCardInfo(unittest.TestCase):
         self.assertEqual(card.cvv, cvv)
 
     def test_invalid_cvv(self):
-        # Creating a CreditCardInfo object with an incorrect CVV
+        # creating a CreditCardInfo object with an incorrect CVV
         card_id = 2
         user_id = 102
         credit_card_number = "8765432187654321"
