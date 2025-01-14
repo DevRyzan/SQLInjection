@@ -11,6 +11,9 @@ pip install pymysql
 
 pip install pyodbc
 
+pip install itsdangerous
+
+pip install jinja2
 
 ### MacOS ###
 
@@ -125,9 +128,3 @@ password: asd
 	4.	' AND 1=1 --
 	5.	' AND SLEEP(5) --
 	6.	' OR EXISTS (SELECT * FROM users) --
-
-
-
-# Session libs 
-
-pip install itsdangerous
