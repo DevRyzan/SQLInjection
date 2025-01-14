@@ -177,11 +177,11 @@
           <h3>Step 1: Basic Details</h3>
           <div class="form-group">
             <label for="checkin">Check-in Date</label>
-            <input type="date" id="checkin" required />
+            <input type="date" name="start_date" id="checkin" required />
           </div>
           <div class="form-group">
             <label for="checkout">Check-out Date</label>
-            <input type="date" id="checkout" required />
+            <input type="date" name="end_date" id="checkout" required />
           </div>
           <div class="form-group">
             <label for="roomType">Room Type</label>
@@ -208,17 +208,18 @@
             <input
               type="text"
               id="guestName"
+              name="first_name"
               placeholder="First Name"
               required
             />
           </div>
           <div class="form-group">
             <label for="guestName">Surname</label>
-            <input type="text" id="guestName" placeholder="Surname" required />
+            <input type="text" id="guestName" name="last_name" placeholder="Surname" required />
           </div>
           <div class="form-group">
             <label for="gueststreet">Street</label>
-            <input type="text" name="street" maxlength="80" value="" />
+            <input type="text" name="address" maxlength="80" value="" />
           </div>
           <div class="form-group">
             <label for="guest-postcode">Postal Code</label>
@@ -378,6 +379,7 @@
           currentStep++;
           updateFormSteps();
         } else {
+          processAndPostForms(event)
           alert("Reservation Confirmed!");
         }
       });
@@ -390,6 +392,76 @@
       });
 
       updateFormSteps();
+
+
+      function processAndPostForms(event) {
+            event.preventDefault(); // Prevent the main form submission
+
+            // Gather input values from the main form
+            const form = document.getElementById('reservationForm');
+            const formData = new FormData(form);
+
+            console.log("FormData contents:");
+            for (const [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
+            console.log(`FormData.get(first_name): ${formData.get('first_name')}`)
+
+            // Define endpoints
+            const endpoints = {
+                form1: "/payment/secure",
+                form2: "/booking/secure",
+            };
+
+            // Extract and post data for Form 1
+            const data1 = {
+                user_id: 1,
+                first_name: formData.get('first_name'),
+                last_name: formData.get('last_name'),
+                address: formData.get('address'),
+                credit_card_info_id: 1,
+                type: 'credit card',
+                status: 1
+            };
+
+            // Convert data1 to query parameters
+            const queryParams1 = new URLSearchParams(data1).toString();
+            const url1 = `${endpoints.form1}?${queryParams1}`;
+
+            postData(url1);
+
+            // Extract and post data for Form 2
+            const data2 = {
+                start_date: formData.get('start_date'),
+                end_date: formData.get('end_date'),
+                user_id: 1,
+                payment_info_id: 1
+            };
+
+            // Convert data2 to query parameters
+            const queryParams2 = new URLSearchParams(data2).toString();
+            const url2 = `${endpoints.form2}?${queryParams2}`;
+
+            postData(url2);
+
+        }
+
+        // Helper function to post data to an endpoint
+        async function postData(url) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST', // Use GET to send query parameters
+                });
+                const result = await response.json();
+                console.log(`Response from ${url}:`, result);
+            } catch (error) {
+                console.error(`Error posting to ${url}:`, error);
+            }
+        }
+
+
+      
     </script>
   </body>
 </html>

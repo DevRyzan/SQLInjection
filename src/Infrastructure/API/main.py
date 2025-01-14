@@ -21,6 +21,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="your-secret-key")
@@ -46,11 +47,9 @@ script_file = os.path.join(frontend_dir, "script.js")
 app.mount("/img", StaticFiles(directory=img_dir), name="img")
 app.mount("/style", StaticFiles(directory=style_dir), name="style")
 
-# Serve the single script.js file
 @app.get("/script.js")
 async def serve_script():
-    with open(script_file, "r") as file:
-        return file.read()
+    return FileResponse(script_file, media_type="application/javascript")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):

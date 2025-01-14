@@ -26,14 +26,14 @@
     <div class="wrapper">
       <div class="form-holder">
         <h2>Create New account</h2>
-        <form id="signup" action="/users/register" class="form">
+        <form id="signup" class="form">
           <div class="form-group">
             <img src="img/user.png" alt="" />
-            <input name="username" type="text" placeholder="User name" />
+            <input name="username" id="username" type="text" placeholder="User name" />
           </div>
           <div class="form-group">
             <img src="img/user.png" alt="" />
-            <input type="text" placeholder="Full name" />
+            <input type="text" id="fullname" name="fullname" placeholder="Full name" />
           </div>
           <div class="form-group">
             <select id="country" class="form-group">
@@ -323,18 +323,18 @@
           </div>
           <div class="form-group">
             <img src="img/email.png" alt="" />
-            <input type="text" placeholder="Email" />
+            <input type="text" id="email" name="email" placeholder="Email" />
           </div>
           <div class="form-group">
             <img src="img/lock.png" alt="" />
-            <input name="password" type="password" placeholder="Password" />
+            <input name="password" id="password" name="password" type="password" placeholder="Password" />
           </div>
           <div class="form-group">
             <img src="img/lock.png" alt="" />
             <input type="password" placeholder="Confirm Password" />
           </div>
           <div class="form-group">
-            <button type="submit">Sign Up</button>
+            <button type="button" onclick="register()">Sign Up</button>
           </div> 
           <div class="form-group">
             <a href="/login" class="right-link">Sign in</a>
@@ -342,43 +342,37 @@
         </form>
       </div>
     </div>
-    <!-- <script>
-      let form;
-      let formData;
-      document.addEventListener('DOMContentLoaded', () => {
-        form = document.getElementById('signup');
-        console.log('content loaded')
-    
-        form.addEventListener('submit', async (event) => {
-          event.preventDefault();
+    <script>
+      async function register() {
+        const data = {
+          username: document.getElementById("username").value,
+          fullname: document.getElementById("fullname").value,
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value
+        };
 
-          // Create a plain JavaScript object with the form data
-          const requestBody = {
-              username: 'john_doe',
-              email: 'john@example.com',
-              password: 'securepassword'
-          };
+        const queryParams = new URLSearchParams(data).toString();
+        const url = `/user/register?${queryParams}`;
 
-          // Send the data as JSON in the body of the request
-          const response = await fetch('http://127.0.0.1:8000/users/register', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',  // Set the content type to JSON
-              },
-              body: JSON.stringify(requestBody),  // Convert the object to a JSON string
-              // You can remove 'mode: "no-cors"' if you are handling CORS server-side
-              mode: 'no-cors'
+        try {
+          const response = await fetch(url, {
+            method: 'POST' // Sending query parameters with POST
           });
 
-          // Handle the response
-          if (response.ok) {
-              const result = await response.json();
-              console.log('Response:', result);
-          } else {
-              console.error('Error:', response.status, response.statusText);
+          if (!response.ok) {
+            console.error(`Register failed with status ${response.status}`);
+            return;
           }
-      });
-    });
-    </script> -->
+
+          const result = await response.json();
+          console.log(`Response from ${url}:`, result);
+
+          // Redirect to the homepage
+          window.location.href = '/';
+        } catch (error) {
+          console.error(`Error posting to ${url}:`, error);
+        }
+    }
+    </script>
   </body>
 </html>

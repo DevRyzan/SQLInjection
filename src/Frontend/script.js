@@ -66,9 +66,35 @@ function addPaymentOption() {
         `;
   paymentOptions.appendChild(newOption);
 
+
+  const data1 = {
+        user_id: 1,
+        credit_card_number: document.getElementById("card-number").value,
+        name_on_card: document.getElementById("card-name").value,
+        expr_date: document.getElementById("expiry-date").value,
+        cvv: document.getElementById("cvv").value
+    };
+
+    const queryParams1 = new URLSearchParams(data1).toString();
+    const url1 = `/creditcard/secure?${queryParams1}`;
+
+    postData(url1);
+
   // Clear form
   document.getElementById("payment-form").reset();
   toggleAddPaymentForm();
+}
+
+async function postData(url) {
+  try {
+      const response = await fetch(url, {
+          method: 'POST', // Use GET to send query parameters
+      });
+      const result = await response.json();
+      console.log(`Response from ${url}:`, result);
+  } catch (error) {
+      console.error(`Error posting to ${url}:`, error);
+  }
 }
 
 function removePaymentOption(button) {
