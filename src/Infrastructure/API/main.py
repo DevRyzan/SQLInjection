@@ -3,10 +3,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
 
-from fastapi import FastAPI
-from Controllers.UserController import router as user_router
-from DbConfig import engine, Base
-from Application.DbContext import  DbContext
+from fastapi import FastAPI  
 from InSecureControllers.InSecureUserController import router as router_insecure 
 from InSecureRepos.InSecureUserRepo import UserRepositoryInsecure 
 from starlette.middleware.sessions import SessionMiddleware
@@ -16,18 +13,17 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
-try:
-    Base.metadata.create_all(bind=engine)
-    print("Tables created successfully!")
-except Exception as e:
-    print(f"Error creating tables: {e}")
+# try:
+#     Base.metadata.create_all(bind=engine)
+#     print("Tables created successfully!")
+# except Exception as e:
+#     print(f"Error creating tables: {e}")
 
 # db_name = "sql_injection.db"
 # repo_insecure = UserRepositoryInsecure(db_name)
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="your-secret-key")
-app.include_router(user_router, prefix="/users", tags=["Users"])
 app.include_router(router_insecure, prefix="/insecure", tags=["Insecure Users"])
 
 # Serve static HTML files

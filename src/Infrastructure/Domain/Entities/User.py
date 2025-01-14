@@ -2,8 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from sqlalchemy import Column, Integer, String, Boolean
-from API.DbConfig import Base
+from sqlalchemy import Column, Integer, String, Boolean 
 from sqlalchemy.ext.declarative import declarative_base
 
 #User Entity class. We will store our property and some hidden data in this class and add new properties.
