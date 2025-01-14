@@ -3,7 +3,7 @@ import datetime
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../../../')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from Infrastructure.Domain.Models.DTOs.BookingDTOs.CreateBookingDTO import CreateBookingDTO
 
 #python3 -m unittest src/Infrastructure/Domain/Models/DTOs/BookingDTOs/test_create_booking_dto.py

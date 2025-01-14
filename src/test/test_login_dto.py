@@ -2,7 +2,7 @@ import unittest
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../../../')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from Infrastructure.Domain.Models.DTOs.UserDTOs.LoginDTO import LoginDTO
 
 #python3 -m unittest src/Infrastructure/Domain/Models/DTOs/UserDTOs/test_login_dto.py

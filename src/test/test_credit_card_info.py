@@ -3,7 +3,7 @@ import datetime
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from Infrastructure.Domain.Entities.CreditCardInfo import CreditCardInfo
 
 #python3 -m unittest src/Infrastructure/Domain/Entities/test_credit_card_info.py
