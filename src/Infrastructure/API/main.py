@@ -8,6 +8,7 @@ from Controllers.UserController import router as user_router
 from DbConfig import engine, Base
 from Application.DbContext import  DbContext
 from InSecureControllers.InSecureUserController import router as router_insecure 
+from Infrastructure.API.Controllers.PaymentController import router as payment_router
 from InSecureRepos.InSecureUserRepo import UserRepositoryInsecure 
 from starlette.middleware.sessions import SessionMiddleware
 
@@ -29,6 +30,7 @@ app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="your-secret-key")
 app.include_router(user_router, prefix="/users", tags=["Users"])
 app.include_router(router_insecure, prefix="/insecure", tags=["Insecure Users"])
+app.include_router(payment_router, prefix="/payments", tags=["Payments"])
 
 # Serve static HTML files
 frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../Frontend"))
