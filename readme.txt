@@ -15,6 +15,8 @@ pip install itsdangerous
 
 pip install jinja2
 
+pip install unittest2
+
 ### MacOS ###
 
 -Download docker
