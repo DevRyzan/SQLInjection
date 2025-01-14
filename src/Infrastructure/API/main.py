@@ -4,10 +4,15 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'
 
 
 from fastapi import FastAPI  
-from InSecureControllers.InSecureBookingController import router as router_booking 
+from InSecureControllers.InSecureBookingController import router as router_booking
 from InSecureControllers.InSecureCreditCardController import router as router_creditcard 
 from InSecureControllers.InSecurePaymentController import router as router_payment
-from InSecureControllers.InSecureUserController import router as router_insecure 
+from InSecureControllers.InSecureUserController import router as router_insecure
+
+from Controllers.BookingController import router as router_booking_secure
+from Controllers.CreditCardController import router as router_creditcard_secure
+from Controllers.PaymentController import router as router_payment_secure
+from Controllers.UserController import router as router_user_secure
 
 from InSecureRepos.InSecureUserRepo import UserRepositoryInsecure 
 from starlette.middleware.sessions import SessionMiddleware
@@ -23,6 +28,12 @@ app.include_router(router_insecure, prefix="/insecure", tags=["Insecure Users"])
 app.include_router(router_creditcard, prefix="/creditcard", tags=["Insecure CreditCard"])
 app.include_router(router_payment, prefix="/payment", tags=["Insecure Payment"])
 app.include_router(router_booking, prefix="/booking", tags=["Insecure Booking"])
+
+app.include_router(router_user_secure, prefix="/user", tags=["Users"])
+app.include_router(router_creditcard_secure, prefix="/creditcard", tags=["CreditCard"])
+app.include_router(router_payment_secure, prefix="/payment", tags=["Payment"])
+app.include_router(router_booking_secure, prefix="/booking", tags=["Booking"])
+
 
 # Serve static HTML files
 frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../Frontend"))
