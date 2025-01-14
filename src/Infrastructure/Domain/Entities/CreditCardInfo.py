@@ -8,3 +8,7 @@ class CreditCardInfo:
         self.name_on_card = name_on_card
         self.expr_date = expr_date
         self.cvv = cvv
+        
+        if not (cvv.isdigit() and len(cvv) == 3):
+            raise ValueError("CVV must be a 3-digit number")
+        self.cvv = cvv

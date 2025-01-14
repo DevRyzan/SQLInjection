@@ -2,20 +2,21 @@ import unittest
 import datetime
 from src.Infrastructure.Domain.Models.DTOs.UserDTOs.RegisterDTO import RegisterDTO
 
+#python3 -m unittest src/Infrastructure/Domain/Models/DTOs/UserDTOs/test_register_dto.py
 
 class TestRegisterDTO(unittest.TestCase):
 
     def test_register_dto_initialization(self):
-        """Tests whether the RegisterDTO object is created correctly."""
-        firstname = "John"
-        lastname = "Doe"
-        birthdate = datetime.date(1990, 5, 15)
-        email = "johndoe@example.com"
-        country = "USA"
+        # tests whether the RegisterDTO object is created correctly
+        firstname = "Sadik Emre"
+        lastname = "Ikiz"
+        birthdate = datetime.date(2001, 1, 20)
+        email = "sadikemre@example.com"
+        country = "Turkey"
         phonenumber = "1234567890"
         password = "securepassword"
 
-        # Create DTO object
+        # create DTO object
         register_dto = RegisterDTO(
             firstname=firstname,
             lastname=lastname,
@@ -26,7 +27,7 @@ class TestRegisterDTO(unittest.TestCase):
             password=password,
         )
 
-        # Check if values ​​are assigned correctly
+        # check if values ​​are assigned correctly
         self.assertEqual(register_dto.firstname, firstname)
         self.assertEqual(register_dto.lastname, lastname)
         self.assertEqual(register_dto.birthdate, birthdate)
@@ -36,11 +37,11 @@ class TestRegisterDTO(unittest.TestCase):
         self.assertEqual(register_dto.password, password)
 
     def test_empty_email(self):
-        """Tests creating RegisterDTO with a blank email."""
+        # tests creating RegisterDTO with a blank email
         firstname = "Sadik Emre"
         lastname = "Ikiz"
-        birthdate = datetime.date(1990, 5, 15)
-        email = ""  # Empty mail
+        birthdate = datetime.date(2001, 1, 20)
+        email = ""  # empty mail
         country = "Turkey"
         phonenumber = "1234567890"
         password = "securepassword"
@@ -57,11 +58,11 @@ class TestRegisterDTO(unittest.TestCase):
             )
 
     def test_invalid_birthdate(self):
-        """Tests whether an error is thrown when a birth date is given with a future date."""
+        # tests whether an error is thrown when a birth date is given with a future date
         firstname = "Sadik Emre"
         lastname = "Ikiz"
-        birthdate = datetime.date(2030, 1, 1)  # Invalid date (future)
-        email = "johndoe@example.com"
+        birthdate = datetime.date(2030, 1, 1)  # invalid date (future)
+        email = "sadikemre@example.com"
         country = "Turkey"
         phonenumber = "1234567890"
         password = "securepassword"
@@ -78,14 +79,14 @@ class TestRegisterDTO(unittest.TestCase):
             )
 
     def test_empty_password(self):
-        """Tests creating RegisterDTO with a blank password."""
+        # tests creating RegisterDTO with a blank password
         firstname = "Sadik Emre"
         lastname = "Ikiz"
         birthdate = datetime.date(1990, 5, 15)
-        email = "johndoe@example.com"
+        email = "sadikemre@example.com"
         country = "Turkey"
         phonenumber = "1234567890"
-        password = ""  # Empty password
+        password = ""  # empty password
 
         with self.assertRaises(ValueError):
             RegisterDTO(

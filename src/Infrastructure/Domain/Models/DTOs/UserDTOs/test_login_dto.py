@@ -6,19 +6,19 @@ from src.Infrastructure.Domain.Models.DTOs.UserDTOs.LoginDTO import LoginDTO
 class TestLoginDTO(unittest.TestCase):
 
     def test_login_dto_initialization(self):
-        """Tests whether the LoginDTO object has been created correctly."""
+        # tests whether the LoginDTO object has been created correctly
         email = "test@example.com"
         password = "securepassword"
 
-        # Create DTO object
+        # create DTO object
         login_dto = LoginDTO(email=email, password=password)
 
-        # Check if values ​​are assigned correctly
+        # check if values ​​are assigned correctly
         self.assertEqual(login_dto.email, email)
         self.assertEqual(login_dto.password, password)
 
     def test_empty_email(self):
-        """Tests creating a LoginDTO with a blank email."""
+        # tests creating a LoginDTO with a blank email
         email = ""
         password = "securepassword"
 
@@ -26,7 +26,7 @@ class TestLoginDTO(unittest.TestCase):
             LoginDTO(email=email, password=password)
 
     def test_empty_password(self):
-        """Tests creating a LoginDTO with a blank password."""
+        # tests creating a LoginDTO with a blank password
         email = "test@example.com"
         password = ""
 
@@ -34,7 +34,7 @@ class TestLoginDTO(unittest.TestCase):
             LoginDTO(email=email, password=password)
 
     def test_invalid_email_format(self):
-        """Tests creating a LoginDTO with an invalid email format."""
+        # tests creating a LoginDTO with an invalid email format
         email = "invalid-email-format"
         password = "securepassword"
 

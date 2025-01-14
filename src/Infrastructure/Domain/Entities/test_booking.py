@@ -24,7 +24,7 @@ class TestBooking(unittest.TestCase):
         self.assertEqual(booking.payment_info_id, payment_info_id)
 
     def test_booking_without_payment(self):
-        # Creating a Booking object without Payment info ID
+        # creating a Booking object without Payment info ID
         booking_id = 2
         start_date = datetime.date(2025, 2, 1)
         end_date = datetime.date(2025, 2, 3)
@@ -33,7 +33,7 @@ class TestBooking(unittest.TestCase):
 
         booking = Booking(booking_id, start_date, end_date, user_id, payment_info_id)
 
-        # Check Payment info as None
+        # check Payment info as None
         self.assertIsNone(booking.payment_info_id)
 
 if __name__ == '__main__':
